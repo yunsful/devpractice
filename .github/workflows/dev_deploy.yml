@@ -12,8 +12,8 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Set up JDK 17
-      - uses: actions/setup-java@v3
-      - with:
+        uses: actions/setup-java@v3
+        with:
           distribution: 'temurin'
           java-version: '17'
 
@@ -53,7 +53,7 @@ jobs:
           EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
           EC2_USERNAME: ${{ secrets.EC2_USERNAME }}
           EC2_HOST: ${{ secrets.EC2_HOST }}
-        runs: |
+        run: |
           echo "$EC2_SSH_KEY" > private_key.pem
           chmod 600 private_key.pem
           jar_file=$(find build/libs -name '*.jar' ! -name '*plain.jar' | head -n 1)
